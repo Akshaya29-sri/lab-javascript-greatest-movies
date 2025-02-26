@@ -23,9 +23,15 @@ function howManyMovies(moviesArray) {
 function scoresAverage(moviesArray) {
     if(moviesArray.length===0) return 0;
     const totalScore=moviesArray.reduce((sum,movie)=>{
-        sum+(typeof movie.score==="number"?movie.score:0)
-    },0);
-    return Number((totalScore/moviesArray.length).toFixed(2));
+       //return sum+(typeof movie.score==="number"? movie.score:0)
+       if(movie.score!==undefined){
+        return sum+movie.score;
+       }else{
+        return sum;
+       }
+       //return movie.score ? sum + movie.score : sum;
+       },0);
+    return parseFloat((totalScore/moviesArray.length).toFixed(2));
 }
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
